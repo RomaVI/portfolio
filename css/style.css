@@ -1,0 +1,1008 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /*La idea de esto es que en el futuro tenga la opcion de cambar entre tema de dia y noche*/
+    --black: #333;
+    --black: #333;
+    --white: #EBEBEB;
+    --white2: #EBEBEB;
+    --gris: #53657D;
+    --black: #333;
+    --white: #EBEBEB;
+    --sombra-ppal: #c9c9c9;
+    --sombra-sec: #ffffff;
+    --borde-negro: #00000050;
+    --marcado: rgb(127, 195, 255);
+    /* Tipografía */
+    --fuente: ;
+}
+
+body {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background-color: var(--white2);
+}
+
+
+/*header*/
+.header-container {
+    position: relative;
+    width: 100%;
+}
+
+
+
+.nav {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+    background: var(--white2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: width 0.5;
+    z-index: 100000;
+}
+
+.nav.active {
+    width: 0;
+}
+
+
+.nav ul {
+    /*La pos relative tiene la propiedad de que mantiene un flujo normal del documento lo que guarda su pocicion y mantiene la distancia entre el borde del elemento al borde de su contenedor en la direccion correspondientes*/
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+}
+
+.nav ul li {
+    /*Pongo position relative en todo para que se mantenga una jerarquia*/
+    position: relative;
+    width: 100%;
+    list-style: none;
+}
+
+.nav ul li a {
+    /*se puede utilizar "z-index" para controlar su elevación en relación con otros elementos. cuando se usa con postion relative*/
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 10px
+        /*top y bot*/
+        0
+        /*Izq y derecha */
+    ;
+    white-space: normal
+        /*"white-space:normal;" es una propiedad CSS que define cómo se deben manejar los espacios en blanco, en el caso de normal significa que cualquier espacio en blanco adicional, como tabulaciones, espacios y saltos de línea, se reducen a un solo espacio. Además, el texto se ajusta automáticamente al ancho del contenedor en el que se encuentra, lo que puede dar lugar a líneas de texto más largas o más cortas según la resolución de la pantalla o el tamaño del contenedor.*/
+    ;
+    display: flex;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 500;
+    letter-spacing: 2px;
+    opacity: 0.5;
+}
+
+.nav ul li a:hover {
+    /*Recordar sin el hover disminui su opacidad o trasparencia y aqui la aumento*/
+    opacity: 1;
+}
+
+header .main {
+    /*con poner el header se está aumentando la especificidad de la regla, lo que significa que tendrá prioridad sobre otras reglas que puedan aplicarse a ".main" en la página. */
+    position: absolute
+        /*Con absolute se quita del flujo normal, en otras palabras reaparece el h1 en la parte superior ya que no se le aplican las otras caracteristicas de posicion. */
+    ;
+    width: calc(100vw - 300px);
+    /*La funcion calc es una funcion que permite calcular en este caso permite que del 100% del ancho siempre se le reste 300px osea si la pantalla tiene 1000px el ancho sera de 700px*/
+    left: 300px;
+    background: var(--white);
+    min-height: 100vh;
+}
+
+header .main.active {
+    width: calc(100vw - 0px);
+    /*La funcion calc es una funcion que permite calcular en este caso permite que del 100% del ancho siempre se le reste 300px osea si la pantalla tiene 1000px el ancho sera de 700px*/
+    left: 0px;
+
+}
+
+header .main.active {
+    margin-left: 0px;
+
+}
+
+header .main .headerbar {
+    position: fixed;
+    top: 0;
+    width: calc(100vw - 300px);
+    left: 300px;
+    background: var(--white2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+    height: 60px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000
+        /*Para que desaparesca es como displey none */
+    ;
+    transition: width 0.5s, left 0.5s
+        /*Aqui dice todos los movimientos del width "ancho" se hacen en 5s e inicia por la izquierda de modo que incluso si moves la pagina es mas responsiovo :D*/
+        /*EL primero es para el logo y el segundo afecta al boton hamburguesa*/
+    ;
+
+}
+
+.main .headerbar.active {
+    width: calc(100vw - 0px);
+    left: 0px;
+
+}
+
+
+.main .headerbar .logo {
+    color: var(--black);
+    font-weight: 700
+        /*Grosor de la negrita 'letra'*/
+    ;
+    text-decoration: none;
+    font-size: 1.4em
+        /*En referencia al tamaño del elemnto padre */
+    ;
+    text-transform: uppercase
+        /*Trasforma el texto en mayusculas aunque es mas facil solo escribirla en mayusculas ;D*/
+    ;
+    letter-spacing: 1px
+        /*Aumenta el espacio entre las letras */
+    ;
+}
+
+.main .headerbar .logo {
+    position: relative;
+    width: (100vw - 300px);
+    height: 60px;
+    width: 250px;
+    cursor: pointer
+        /*El elemento ahora es interactivo*/
+    ;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-left: 0;
+}
+
+
+
+
+
+
+
+
+
+/*Inicia el Banner*/
+
+.banner {
+    top: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 150px;
+    padding: 0 20px;
+    box-shadow: inset,
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+
+}
+
+.banner.active {
+    left: 0;
+}
+
+.banner img {
+    width: 300px;
+}
+
+.banner section {
+    min-height: 100vh;
+}
+
+
+.banner .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+
+}
+
+.banner .imgBx {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 20px;
+
+
+}
+
+.banner .imgBx img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+
+}
+
+.banner h3 {
+    position: relative;
+    font-size: 1.4em;
+    color: var(--gris);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-bottom: 5vh;
+
+}
+
+.banner p {
+    color: var(--gris);
+    padding-bottom: 5vh;
+
+}
+
+
+.banner .socialMedia {
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+
+}
+
+.banner .socialMedia {
+    list-style: none;
+    gap: 25px;
+
+
+}
+
+.banner .socialMedia li a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    text-decoration: none;
+    border-radius: 50%;
+    color: var(--gris);
+    background: #EBEBEB;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.banner .socialMedia li a:hover {
+    box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.banner .socialMedia .fa {
+    color: rgb(80, 0, 78);
+
+
+
+}
+
+@media screen and (max-width: 578px) {
+
+    .nav {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        z-index: 2;
+
+    }
+
+    .headerbar{
+        position:absolute;
+        padding: 0;
+        z-index: 10;
+        left: 0px !important;
+        width: 100vw !important;
+        margin-left: 0;
+    }
+}
+
+/*Termina el banner*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Animaciones de la pagina y botones*/
+/*Animacion del logo*/
+.headerbar .logo h1::after {
+    content: "CODERBY";
+    font-size: 1.1rem;
+    margin-left: -140px;
+    display: flex;
+    padding-top: 20px;
+    position: relative;
+    z-index: 10000;
+    color: var(--gris);
+
+}
+
+.headerbar .logo h1:hover:after {
+    content: "";
+    /*La verdad es que no sabia como escribir el h1 de modo 
+    que cambiara de palabra con el hover porque seguia apareciendo asi que
+    se me ocurrio esto :D*/
+    position: relative;
+
+}
+
+.headerbar .logo h1:hover:before {
+    content: "NAPOLEON ROMANO";
+    font-size: 1.1rem;
+    margin-left: -85px;
+    display: flex;
+    padding-top: 20px;
+    position: relative;
+    color: var(--gris);
+}
+
+/*Termina la animacion del logo*/
+/*Animacion de la hamburguesa*/
+.headerbar .toggle .header-hamburguesa {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 22px;
+    justify-content: space-between;
+    padding: 0;
+    position: relative;
+    width: 30px;
+
+
+}
+
+.headerbar .toggle .header-hamburguesa-line {
+    background-color: var(--gris);
+    border-radius: 3px;
+    height: 0.2rem;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    width: 100%;
+    position: relative;
+
+
+}
+
+.headerbar .toggle .header-hamburguesa:hover .header-hamburguesa-line:nth-child(1) {
+    transform: translateY(9.5px) rotate(45deg);
+    position: relative;
+
+}
+
+.headerbar .toggle .header-hamburguesa:hover .header-hamburguesa-line:nth-child(2) {
+    opacity: 0;
+    position: relative;
+
+}
+
+.headerbar .toggle .header-hamburguesa:hover .header-hamburguesa-line:nth-child(3) {
+    transform: translateY(-9.5px) rotate(-45deg);
+    position: relative;
+
+
+}
+
+/*Termina animacion de hamburguesas*/
+
+
+
+
+
+
+
+/* animacion del boton de descarga cv */
+
+.block-btn-cv {
+    background: #EBEBEB;
+
+}
+
+.block-btn-cv a {
+    background: #EBEBEB;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.block-btn-cv a:hover {
+    background: #EBEBEB;
+    box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+
+.block-cv {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 105px 0;
+}
+
+
+.block-cv a {
+    display: flex;
+    min-width: 225px;
+    padding: 25px 35px;
+    margin: 0 25px;
+    border-radius: 10px;
+    color: var(--gris);
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/*Termina el boton de cv*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Nueva pagina. Pagina Sobre mi */
+
+/* ___________________________*/
+
+
+
+.hero {
+    padding-top: 40px;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: var(--white2);
+    position: relative;
+    display: flex;
+    z-index: 100000;
+}
+
+
+.detel {
+    top: 100px;
+    margin-left: 8%;
+    display: flex;
+    flex-direction: column;
+    z-index: 100000000;
+
+}
+
+.detel h1 {
+    display: flex;
+    top: 10px;
+    font-size: 50px;
+    color: var(--gris);
+    margin-bottom: 20px;
+    text-shadow: 2px 3px 2px var(--gris);
+}
+
+.detel p {
+    color: var(--black);
+    line-height: 22px;
+    max-width: 60vw;
+}
+
+.detel span {
+    color: rgb(148, 13, 76);
+    text-shadow: 2px 3px 2px #a00b0b;
+}
+
+
+.detel .hero-botonoes {
+    background: var(--white);
+    padding: 10px 18px;
+    max-width: 40vw;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--white);
+    display: inline-block;
+    margin: 30px 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: space-between;
+}
+
+.hero-boton1 {
+    width: 200px;
+    height: 50px;
+    background: var(--whitew);
+    border: none;
+    border-radius: 5px;
+    margin-right: 3vw;
+    padding: 1vh 1vw;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+
+}
+
+.hero-boton2 {
+    width: 200px;
+    background: var(--whitew);
+    border: none;
+    border-radius: 5px;
+    margin-right: 3vw;
+    padding: 1vh 1vw;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+
+}
+
+.hero-boton3 {
+    background: var(--whitew);
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 3vw;
+    padding: 1vh 1vw;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+
+}
+
+.hero-boton1:hover {
+    box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+
+}
+
+.hero-boton2:hover {
+    box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+
+}
+
+.hero-boton3:hover {
+    box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+
+}
+
+
+
+
+.detel a:hover {
+    box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.detel span {
+    margin-left: 20px;
+}
+
+.hero-texto {
+    background: #EBEBEB;
+    padding: 10px 18px;
+    max-width: 45vw;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--white);
+    display: inline-block;
+    margin: 0;
+}
+
+.hero-texto1 {
+    background: #EBEBEB;
+    border-radius: 5px;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    margin-bottom: 2vh;
+    padding-bottom: 55px;
+    cursor: move;
+}
+
+.hero-texto1:hover {
+    box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+
+
+}
+
+
+
+.images {
+    width: 50%;
+    height: 80%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.images img {
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: bottom 1s, left 1s;
+}
+
+.images .hero-texturas {
+    height: 100vh;
+    left: 30vw;
+    position: relative;
+
+
+}
+
+
+.images .hero-texturas:hover {
+    bottom: 40px;
+}
+
+.images:hover .hero-retrato {
+    left: 45%;
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .images {
+        display: none
+    }
+
+    .banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .detalle1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .detel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 90vw;
+
+        margin-right: 5vw;
+        max-width: none;
+    }
+
+    .detel h1 {
+
+        margin-top: 5vh;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 34px;
+
+    }
+
+    .hero-texto {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        max-width: none;
+        justify-content: center;
+        padding-bottom: 1vh;
+
+
+    }
+
+    .hero-texto1 {
+        padding: 0;
+        margin-left: 25px;
+
+    }
+
+    .hero-botonoes {
+        display: flex;
+        justify-content: space-between;
+    }
+
+}
+
+
+
+
+
+/*Nuevo*/
+/* Nueva pagina Contacto*/
+
+
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+.content-logo {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.content-logo span {
+    color: #570071;
+}
+
+.contact-wrapper {
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.contact-wrapper>* {
+    padding: 1em;
+}
+
+.contact-form {
+    background: #EBEBEB;
+    color: var(--gris);
+}
+
+.contact-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.contact-form form label {
+    display: block;
+}
+
+.contact-form form p {
+    margin: 0;
+    padding: 1em;
+}
+
+.contact-form form .block {
+    grid-column: 1 / 3;
+}
+
+.contact-form form button,
+.contact-form form input,
+.contact-form form textarea {
+    width: 100%;
+    padding: .7em;
+    border: none;
+    background: none;
+    outline: 0;
+    color: var(--gris);
+    border-bottom: 1px solid #2a0476;
+    box-shadow: 2px 2px --gris;
+}
+
+.contact-form form button {
+    background: var(--white);
+    border: 0;
+    text-transform: uppercase;
+    padding: 1em;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+
+}
+
+.contact-form form button {
+    background: var(--white);
+    border: 0;
+    text-transform: uppercase;
+    padding: 1em;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+
+}
+
+
+.contact-form form button:hover,
+.contact-form form button:focus {
+    background: #a00b0b;
+    color: #fff;
+    transition: background-color 50s linear;
+    outline: 0;
+    box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+/* CONTACT INFO */
+.contact-info {
+    background: var(--white2);
+    color: var(--gris);
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.contact-info h4,
+.contact-info ul,
+.contact-info p {
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+/* LARGE SIZE */
+@media(min-width: 700px) {
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .contact-wrapper>* {
+        padding: 2em;
+    }
+
+    .contact-info h4,
+    .contact-info ul,
+    .contact-info p {
+        text-align: left;
+    }
+}
+
+/*Termina el contacto*/
+
+
+
+/*====== Proyectos======*/
+
+
+
+.carrousel {
+    margin-left: 5vw;
+    margin-top: 1vh;
+}
+
+
+.carrousel img {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.carrousel h1 {
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    color: var(--gris);
+    padding-bottom: 3vh;
+    text-shadow: -1px -1px blue;
+}
+
+.carrousel h1:hover {
+    text-shadow: -1px -1px rgb(141, 51, 174);
+}
+
+.carrousel a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+    display: inline;
+}
+
+.carrousel li {
+    list-style-type: none;
+}
+
+
+
+
+.carrousel form,
+input,
+textarea,
+select,
+button {
+
+    hyphens: auto;
+    background-color: transparent;
+    display: block;
+}
+
+
+.carrousel .grande {
+    width: 360vw;
+    gap: 10vw;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--black);
+    transition: all 0.4s ease;
+    background-color: var(--white);
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+    padding: 2em;
+    transition: all 0.5s ease;
+    transform: translateX(0%);
+}
+
+.carrousel .img {
+    width: 100vw;
+    min-height: 10vh;
+    max-height: 60vh;
+    color: var(--black);
+    transition: all 0.4s ease;
+    background-color: var(--white);
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+
+.carrousel .puntos {
+    width: 100%;
+    margin: 1em 0 0;
+    padding: 0.4em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrousel .punto {
+    width: 2em;
+    height: 2em;
+    margin: 1em 1em 0;
+    color: var(--black);
+    transition: all 0.4s ease;
+    background-color: var(--white);
+    border-radius: 50%;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.carrousel .punto.activo {
+    box-shadow: inset 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+        inset -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
