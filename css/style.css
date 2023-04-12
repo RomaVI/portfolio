@@ -900,6 +900,7 @@ ul {
 .carrousel {
   margin-left: 5vw;
   margin-top: 1vh;
+  
 }
 
 
@@ -966,6 +967,7 @@ button {
   padding: 2em;
   transition: all 0.5s ease;
   transform: translateX(0%);
+  
 }
 
 .carrousel .img {
